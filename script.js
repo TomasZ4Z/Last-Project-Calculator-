@@ -11,22 +11,38 @@
  
 
 function mathematicalOperation(num1,operator,num2){
-if (typeof num1=="number" && typeof num2=="number" && operator === "+") {
+if (typeof num1=="number" && typeof num2=="number" && operator == "+") {
     return num1 + num2
 }
-else if (typeof num1=="number" && typeof num2=="number" && operator === "-") {
+else if (typeof num1=="number" && typeof num2=="number" && operator == "-") {
     return num1 - num2
 }
-else if (typeof num1=="number" && typeof num2=="number" && operator === "x") {
+else if (typeof num1=="number" && typeof num2=="number" && operator == "x") {
     return num1 * num2
 }
-else if (typeof num1=="number" && typeof num2=="number" && operator === "%") {
+else if (typeof num1=="number" && typeof num2=="number" && operator == "/") {
     return num1 / num2
 }
 
 }
-console.log(mathematicalOperation(10,"%",5))
+console.log(mathematicalOperation(10,"/",5))
 
+
+function extraValue (sum, operator,num3){
+if (typeof sum=="number" && typeof num3=="number" && operator == "+") {
+    return sum + num3
+}
+else if (typeof sum=="number" && typeof num3=="number" && operator == "-") {
+    return sum - num3
+}
+else if (typeof sum=="number" && typeof num3=="number" && operator == "x") {
+    return sum * num3
+}
+else if (typeof sum=="number" && typeof num3=="number" && operator == "/") {
+    return sum / num3
+}
+
+}
 
 
 
@@ -44,10 +60,16 @@ data = document.getElementById("user").value
   console.log(separacion = data.split(option))
   nume1 = parseFloat(separacion[0]) 
   nume2 = parseFloat(separacion[1])
+  nume3 = parseFloat(separacion[2])
   console.log("suma prueba", mathematicalOperation(nume1,option,nume2))
-
-  
+if (!separacion[2]) {
 result.textContent = mathematicalOperation(nume1,option,nume2)
+}
+else {
+ all = mathematicalOperation(nume1,option,nume2)
+result.textContent = extraValue(all,option,nume3)
+}
+ 
 
 })
 
@@ -76,17 +98,26 @@ option = "x"
 
 const divide = document.getElementById("divide")
 divide.addEventListener("click", () => {
-data4 = document.getElementById("user").value+="%"
+data4 = document.getElementById("user").value+="/"
 separacion = data4
-option = "%"
+option = "/"
 })
 
-const clean = document.getElementById("clean")
-clean.addEventListener("click", () => {
-cleanData = document.getElementById("user").value = ""
-separacion = cleanData
+const clear = document.getElementById("clear")
+clear.addEventListener("click", () => {
+clearData = document.getElementById("user").value = ""
+separacion = clearData
 result.textContent = ""
 })
+
+const deletelastOne = document.getElementById("deletelastOne")
+deletelastOne.addEventListener("click", () => {
+last = document.getElementById("user")
+last.value = last.value.slice(0,-1) 
+
+})
+
+
 
 
 const changeOfOperator = document.createElement("user")
