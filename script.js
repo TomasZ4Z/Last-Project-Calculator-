@@ -52,33 +52,52 @@ const firstValue = document.querySelector("#user")
 
 
 option = ""
-let separacion = undefined;
+option2 = "+"
 
+let separacion = undefined;
+let coco = undefined;
 const equal = document.getElementById("equal")
 equal.addEventListener("click", () => {
 data = document.getElementById("user").value
   console.log(separacion = data.split(option))
+  nume3 = data.split(option2[1])
   nume1 = parseFloat(separacion[0]) 
   nume2 = parseFloat(separacion[1])
-  nume3 = parseFloat(separacion[2])
+  nume3 = parseFloat(separacion[2])   
   console.log("suma prueba", mathematicalOperation(nume1,option,nume2))
 if (!separacion[2]) {
 result.textContent = mathematicalOperation(nume1,option,nume2)
 }
+
 else {
- all = mathematicalOperation(nume1,option,nume2)
-result.textContent = extraValue(all,option,nume3)
+all = mathematicalOperation(nume1,option,nume2)
+result.textContent = extraValue(coco,option2,nume3)
 }
  
-
 })
+
+function total(){ 
+
+data = document.getElementById("user").value
+coco = data.split(option)
+nume1 = parseFloat(separacion[0]) 
+nume2 = parseFloat(separacion[1])
+return  mathematicalOperation(nume1,option,nume2)
+
+
+}
+
+
+
 
 const add = document.getElementById("add")
 add.addEventListener("click", () => {
 data1 = document.getElementById("user").value+="+"
 separacion = data1
 option = "+"
-
+option2 = "+"
+loco = total()
+console.log (loco)
 })
 
 const rest = document.getElementById("rest")
@@ -86,6 +105,7 @@ rest.addEventListener("click", () => {
 data2 = document.getElementById("user").value+="-"
 separacion = data2
 option = "-"
+
 
 })
 
