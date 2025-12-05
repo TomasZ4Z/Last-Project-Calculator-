@@ -8,59 +8,101 @@
 // Tu calculadora contendrá funciones para todos los operadores matemáticos básicos que suelen encontrarse 
 // en calculadoras, así que empieza creando funciones para los siguientes elementos y pruébalas en la consola de tu navegador:
  
+
+
+
+                       //Primera función
+//function extraValue (sum, operator,num3){
+//if (typeof sum=="number" && typeof num3=="number" && operator == "+") {
+  //  return sum + num3
+//}
+//else if (typeof sum=="number" && typeof num3=="number" && operator == "-") {
+  //  return sum - num3
+//}
+//else if (typeof sum=="number" && typeof num3=="number" && operator == "x") {
+  //  return sum * num3
+//}
+//else if (typeof sum=="number" && typeof num3=="number" && operator == "/") {
+  //  return sum / num3
+//}
+//}
+
+function mathematicalOperation(num1, operador, num2) {
+    if (typeof num1 == "number" && typeof num2 == "number") {
+        if (operador == "+") return num1 + num2;
+        if (operador == "-") return num1 - num2;
+        if (operador == "x") return num1 * num2;
+        if (operador == "/") return num1 / num2;
+    }
+}
+
+
+function extraValue(sum, operador, num3){
+return mathematicalOperation(sum, operador, num3)
+}
+
+
+
+const input = document.querySelector("#user")
+
+let ops = []
+
+const equal = document.getElementById("equal").addEventListener("click", () => {
+const data = input.value
+})
+
+ops = data.split("").filter(c => "+-x/".includes(c))
+const nums = data.split (/[\+\-x\/]/).map(n => parseFloat(n))
+
+
+if (nums.length === 2){
+const resultado = mathematicalOperation(nums[0],op[0],nums[1])
+result.textContent = resultado  
+return
+}
+
+if (nums.length === 3){
+const firstpair = mathematicalOperation(nums[0],ops[0],nums[1])    
+const final = extraValue(firstpair,ops[1],nums[2])
+result.textContent = final
+return
+}
+["keyboard","onclick"].forEach(papa)
+
+
  
 
-function mathematicalOperation(num1,operator,num2){
-if (typeof num1=="number" && typeof num2=="number" && operator == "+") {
-    return num1 + num2
-}
-else if (typeof num1=="number" && typeof num2=="number" && operator == "-") {
-    return num1 - num2
-}
-else if (typeof num1=="number" && typeof num2=="number" && operator == "x") {
-    return num1 * num2
-}
-else if (typeof num1=="number" && typeof num2=="number" && operator == "/") {
-    return num1 / num2
+
+
+function opClick (op){
+input.value+=op 
 }
 
-}
-console.log(mathematicalOperation(10,"/",5))
+document.getElementById("add").addEventListener("click",() => opClick("+"))
+document.getElementById("rest").addEventListener("click",() => opClick("-"))
+document.getElementById("multi").addEventListener("click",() => opClick("x"))
+document.getElementById("divide").addEventListener("click",() => opClick("/"))
+
+document.getElementById("clear").addEventListener("click",() => {
+input.value = ""    
+result.textContent = ""    
+})
+
+document.getElementById("deleteLastOne").addEventListener("click",() => {
+input.value = input.value.slice(0,-1)    
+})
 
 
-function extraValue (sum, operator,num3){
-if (typeof sum=="number" && typeof num3=="number" && operator == "+") {
-    return sum + num3
-}
-else if (typeof sum=="number" && typeof num3=="number" && operator == "-") {
-    return sum - num3
-}
-else if (typeof sum=="number" && typeof num3=="number" && operator == "x") {
-    return sum * num3
-}
-else if (typeof sum=="number" && typeof num3=="number" && operator == "/") {
-    return sum / num3
-}
-
-}
-
-
-
-const firstValue = document.querySelector("#user")
-
-
-
-
-option = ""
-option2 = "+"
-
+/*option = ""
+option2 = ""
+option3 = ""
+let caja = undefined
 let separacion = undefined;
 let coco = undefined;
 const equal = document.getElementById("equal")
 equal.addEventListener("click", () => {
 data = document.getElementById("user").value
   console.log(separacion = data.split(option))
-  nume3 = data.split(option2[1])
   nume1 = parseFloat(separacion[0]) 
   nume2 = parseFloat(separacion[1])
   nume3 = parseFloat(separacion[2])   
@@ -71,18 +113,18 @@ result.textContent = mathematicalOperation(nume1,option,nume2)
 
 else {
 all = mathematicalOperation(nume1,option,nume2)
-result.textContent = extraValue(coco,option2,nume3)
+result.textContent = extraValue(all,option2,nume3)
 }
- 
 })
 
 function total(){ 
 
-data = document.getElementById("user").value
-coco = data.split(option)
-nume1 = parseFloat(separacion[0]) 
-nume2 = parseFloat(separacion[1])
-return  mathematicalOperation(nume1,option,nume2)
+ caja = document.getElementById("user").value
+coco = caja.split(option2)
+numero1 = parseFloat(coco[0]) 
+numero2 = parseFloat(coco[1])
+console.log(coco)
+return  mathematicalOperation(numero1,option2,numero2)
 
 
 }
@@ -90,22 +132,35 @@ return  mathematicalOperation(nume1,option,nume2)
 
 
 
-const add = document.getElementById("add")
-add.addEventListener("click", () => {
+/*const add = document.getElementById("add")
+add.addEventListener("click", () => { 
 data1 = document.getElementById("user").value+="+"
 separacion = data1
+coco = data1
 option = "+"
 option2 = "+"
-loco = total()
-console.log (loco)
+if (secondClick === 2) {
+total()
+console.log (total())
+}
+ 
+
 })
 
 const rest = document.getElementById("rest")
 rest.addEventListener("click", () => {
+secondClick++    
 data2 = document.getElementById("user").value+="-"
 separacion = data2
-option = "-"
+coco = data2
 
+option = "-"
+option2 = "-"
+
+if (secondClick === 2) {
+total()
+console.log (total())
+}
 
 })
 
