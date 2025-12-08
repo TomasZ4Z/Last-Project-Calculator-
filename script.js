@@ -28,13 +28,14 @@
 //}
 
 function mathematicalOperation(num1, operador, num2) {
-    if (typeof num1 == "number" && typeof num2 == "number") {
+     
+if (typeof num1 == "number" && typeof num2 == "number"){
         if (operador == "+") return num1 + num2;
         if (operador == "-") return num1 - num2;
         if (operador == "x") return num1 * num2;
         if (operador == "/") return num1 / num2;
     }
-}
+  }
 
 
 function extraValue(sum, operador, num3){
@@ -42,24 +43,39 @@ return mathematicalOperation(sum, operador, num3)
 }
 
 
-
 const input = document.querySelector("#user")
+const result = document.createElement("div")
+document.body.appendChild(result)
 
 let ops = []
 
 const equal = document.getElementById("equal").addEventListener("click", () => {
-const data = input.value
-})
+ data = input.value
+
 
 ops = data.split("").filter(c => "+-x/".includes(c))
-const nums = data.split (/[\+\-x\/]/).map(n => parseFloat(n))
+const nums = data.split(/[\+\-\x\/]/).map(n => parseFloat(n))
 
 
-if (nums.length === 2){
-const resultado = mathematicalOperation(nums[0],op[0],nums[1])
-result.textContent = resultado  
-return
+const resultado = mathematicalOperation(nums[0],ops[0],nums[1])
+
+if (nums.length === 2 % resultado == NaN){
+  result.textContent = "error"
+  return
 }
+console.log(resultado)
+//else result.textContent = resultado
+//return
+
+
+//if (nums.length === 2){
+//const resultado = mathematicalOperation(nums[0],ops[0],nums[1])
+//result.textContent = resultado  
+//return
+//}
+
+
+
 
 if (nums.length === 3){
 const firstpair = mathematicalOperation(nums[0],ops[0],nums[1])    
@@ -67,7 +83,9 @@ const final = extraValue(firstpair,ops[1],nums[2])
 result.textContent = final
 return
 }
-["keyboard","onclick"].forEach(papa)
+
+})
+//["keyboard","onclick"].forEach(papa)
 
 
  
@@ -91,6 +109,9 @@ result.textContent = ""
 document.getElementById("deleteLastOne").addEventListener("click",() => {
 input.value = input.value.slice(0,-1)    
 })
+ const changeOfOperator = document.createElement("user")
+document.body.appendChild(changeOfOperator)
+changeOfOperator.textContent = ("buenas")
 
 
 /*option = ""
@@ -132,7 +153,7 @@ return  mathematicalOperation(numero1,option2,numero2)
 
 
 
-/*const add = document.getElementById("add")
+const add = document.getElementById("add")
 add.addEventListener("click", () => { 
 data1 = document.getElementById("user").value+="+"
 separacion = data1
@@ -195,9 +216,6 @@ last.value = last.value.slice(0,-1)
 
 
 
-const changeOfOperator = document.createElement("user")
-document.body.appendChild(changeOfOperator)
-changeOfOperator.textContent = ("buenas")
 
 
 
@@ -205,4 +223,4 @@ changeOfOperator.textContent = ("buenas")
 const result = document.createElement("div")
 document.body.appendChild(result)
 
-
+*/
