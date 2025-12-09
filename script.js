@@ -44,8 +44,10 @@ return mathematicalOperation(sum, operador, num3)
 
 
 const input = document.querySelector("#user")
-const result = document.createElement("div")
-document.body.appendChild(result)
+const resulty = document.createElement("div")
+resulty.textContent = 'viva el pako'
+resulty.classList.add('pepe')
+document.body.appendChild(resulty)
 
 let ops = []
 
@@ -59,11 +61,22 @@ const nums = data.split(/[\+\-\x\/]/).map(n => parseFloat(n))
 
 const resultado = mathematicalOperation(nums[0],ops[0],nums[1])
 
-if (nums.length === 2 % resultado == NaN){
-  result.textContent = "error"
-  return
+
+if (isNaN(resultado)) {
+  resulty.textContent = "error";
 }
+
+else if (nums.length ===  2){
+    resulty.textContent = resultado
+} 
+
 console.log(resultado)
+
+//if (resultado == NaN){
+  //resulty.textContent = "error"
+//}
+
+
 //else result.textContent = resultado
 //return
 
@@ -80,7 +93,7 @@ console.log(resultado)
 if (nums.length === 3){
 const firstpair = mathematicalOperation(nums[0],ops[0],nums[1])    
 const final = extraValue(firstpair,ops[1],nums[2])
-result.textContent = final
+resulty.textContent = final
 return
 }
 
@@ -88,13 +101,30 @@ return
 //["keyboard","onclick"].forEach(papa)
 
 
- 
+ let secondClick = 0
 
+function opClick(op) {
+  secondClick += 1
+  sameValue1 = op
+  if (secondClick === 1) {
+    input.value += op  
+    return
+  }
+  sameValue2 = op
+  if (secondClick === 2) {
+    if (sameValue1 === sameValue2){
+    input.value += " "
+    }
+     return
+   } 
+   else if (secondClick === 2){
+    input.value += op
+    return
+   }
 
-
-function opClick (op){
-input.value+=op 
+  
 }
+
 
 document.getElementById("add").addEventListener("click",() => opClick("+"))
 document.getElementById("rest").addEventListener("click",() => opClick("-"))
@@ -103,7 +133,7 @@ document.getElementById("divide").addEventListener("click",() => opClick("/"))
 
 document.getElementById("clear").addEventListener("click",() => {
 input.value = ""    
-result.textContent = ""    
+resulty.textContent = ""    
 })
 
 document.getElementById("deleteLastOne").addEventListener("click",() => {
@@ -111,8 +141,7 @@ input.value = input.value.slice(0,-1)
 })
  const changeOfOperator = document.createElement("user")
 document.body.appendChild(changeOfOperator)
-changeOfOperator.textContent = ("buenas")
-
+changeOfOperator.textContent = "buenas"
 
 /*option = ""
 option2 = ""
