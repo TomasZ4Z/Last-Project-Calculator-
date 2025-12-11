@@ -51,11 +51,13 @@ document.body.appendChild(resulty)
 
 let ops = []
 
+
 const equal = document.getElementById("equal").addEventListener("click", () => {
  data = input.value
 
 
 ops = data.split("").filter(c => "+-x/".includes(c))
+
 const nums = data.split(/[\+\-\x\/]/).map(n => parseFloat(n))
 
 
@@ -100,36 +102,50 @@ return
 })
 //["keyboard","onclick"].forEach(papa)
 
+let repeatOps = []
+data2 = input.value
+repeatOps = data2.split("").filter(c => "+-x/".includes(c))
+repeatOps[0] === repeatOps[1]
 
  let secondClick = 0
-
+ sameValue1 = ""
+  sameValue2 = ""
 function opClick(op) {
   secondClick += 1
-  sameValue1 = op
+
   if (secondClick === 1) {
+     
+     console.log(sameValue1)
     input.value += op  
     return
   }
-  sameValue2 = op
-  if (secondClick === 2) {
-    if (sameValue1 === sameValue2){
-    input.value += " "
-    }
-     return
+    sameValue2 = op
+  if (secondClick === 2 && 1 === 1) {
+    
+    
+    joder =  "auto"
+    
+     return input.value += joder
    } 
    else if (secondClick === 2){
     input.value += op
     return
    }
-
-  
 }
 
+document.getElementById("one").addEventListener("click",() => {
+secondClick = 0
+
+})   
 
 document.getElementById("add").addEventListener("click",() => opClick("+"))
 document.getElementById("rest").addEventListener("click",() => opClick("-"))
 document.getElementById("multi").addEventListener("click",() => opClick("x"))
 document.getElementById("divide").addEventListener("click",() => opClick("/"))
+
+
+
+
 
 document.getElementById("clear").addEventListener("click",() => {
 input.value = ""    
@@ -142,6 +158,32 @@ input.value = input.value.slice(0,-1)
  const changeOfOperator = document.createElement("user")
 document.body.appendChild(changeOfOperator)
 changeOfOperator.textContent = "buenas"
+
+let numberGrowing = 0
+
+const contenedor = document.getElementById("contenedor")
+
+for (i = 0; i < 10; i++){  
+const create = document.createElement("button")
+ numberGrowing += 1 
+ if (i === 0){
+ numberGrowing = 0 
+ }
+
+create.textContent = numberGrowing
+
+create.addEventListener("click",() => {
+input.value += create.textContent
+
+})
+
+contenedor.appendChild(create)
+
+}
+
+
+
+
 
 /*option = ""
 option2 = ""
@@ -241,13 +283,6 @@ last = document.getElementById("user")
 last.value = last.value.slice(0,-1) 
 
 })
-
-
-
-
-
-
-
 
 const result = document.createElement("div")
 document.body.appendChild(result)
