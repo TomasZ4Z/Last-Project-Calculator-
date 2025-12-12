@@ -10,23 +10,6 @@
  
 
 
-
-                       //Primera función
-//function extraValue (sum, operator,num3){
-//if (typeof sum=="number" && typeof num3=="number" && operator == "+") {
-  //  return sum + num3
-//}
-//else if (typeof sum=="number" && typeof num3=="number" && operator == "-") {
-  //  return sum - num3
-//}
-//else if (typeof sum=="number" && typeof num3=="number" && operator == "x") {
-  //  return sum * num3
-//}
-//else if (typeof sum=="number" && typeof num3=="number" && operator == "/") {
-  //  return sum / num3
-//}
-//}
-
 function mathematicalOperation(num1, operador, num2) {
      
 if (typeof num1 == "number" && typeof num2 == "number"){
@@ -45,8 +28,7 @@ return mathematicalOperation(sum, operador, num3)
 
 const input = document.querySelector("#user")
 const resulty = document.createElement("div")
-resulty.textContent = 'viva el pako'
-resulty.classList.add('pepe')
+resulty.textContent = 'padresito, me duele el poto'
 document.body.appendChild(resulty)
 
 let ops = []
@@ -74,20 +56,6 @@ else if (nums.length ===  2){
 
 console.log(resultado)
 
-//if (resultado == NaN){
-  //resulty.textContent = "error"
-//}
-
-
-//else result.textContent = resultado
-//return
-
-
-//if (nums.length === 2){
-//const resultado = mathematicalOperation(nums[0],ops[0],nums[1])
-//result.textContent = resultado  
-//return
-//}
 
 
 
@@ -100,43 +68,24 @@ return
 }
 
 })
-//["keyboard","onclick"].forEach(papa)
 
-let repeatOps = []
-data2 = input.value
-repeatOps = data2.split("").filter(c => "+-x/".includes(c))
-repeatOps[0] === repeatOps[1]
 
  let secondClick = 0
- sameValue1 = ""
-  sameValue2 = ""
+ 
 function opClick(op) {
   secondClick += 1
 
   if (secondClick === 1) {
-     
-     console.log(sameValue1)
     input.value += op  
     return
   }
-    sameValue2 = op
-  if (secondClick === 2 && 1 === 1) {
-    
-    
-    joder =  "auto"
-    
-     return input.value += joder
-   } 
-   else if (secondClick === 2){
-    input.value += op
+
+    if (secondClick === 2){
+    input.value += ""
     return
    }
 }
 
-document.getElementById("one").addEventListener("click",() => {
-secondClick = 0
-
-})   
 
 document.getElementById("add").addEventListener("click",() => opClick("+"))
 document.getElementById("rest").addEventListener("click",() => opClick("-"))
@@ -150,11 +99,18 @@ document.getElementById("divide").addEventListener("click",() => opClick("/"))
 document.getElementById("clear").addEventListener("click",() => {
 input.value = ""    
 resulty.textContent = ""    
+secondClick = 0
 })
 
 document.getElementById("deleteLastOne").addEventListener("click",() => {
 input.value = input.value.slice(0,-1)    
+secondClick = 0
 })
+
+document.getElementById("spot").addEventListener("click", () => {
+ input.value += "." 
+})
+
  const changeOfOperator = document.createElement("user")
 document.body.appendChild(changeOfOperator)
 changeOfOperator.textContent = "buenas"
@@ -163,7 +119,7 @@ let numberGrowing = 0
 
 const contenedor = document.getElementById("contenedor")
 
-for (i = 0; i < 10; i++){  
+for (let i = 0; i < 10; i++){  
 const create = document.createElement("button")
  numberGrowing += 1 
  if (i === 0){
@@ -174,7 +130,7 @@ create.textContent = numberGrowing
 
 create.addEventListener("click",() => {
 input.value += create.textContent
-
+secondClick = 0
 })
 
 contenedor.appendChild(create)
@@ -184,107 +140,3 @@ contenedor.appendChild(create)
 
 
 
-
-/*option = ""
-option2 = ""
-option3 = ""
-let caja = undefined
-let separacion = undefined;
-let coco = undefined;
-const equal = document.getElementById("equal")
-equal.addEventListener("click", () => {
-data = document.getElementById("user").value
-  console.log(separacion = data.split(option))
-  nume1 = parseFloat(separacion[0]) 
-  nume2 = parseFloat(separacion[1])
-  nume3 = parseFloat(separacion[2])   
-  console.log("suma prueba", mathematicalOperation(nume1,option,nume2))
-if (!separacion[2]) {
-result.textContent = mathematicalOperation(nume1,option,nume2)
-}
-
-else {
-all = mathematicalOperation(nume1,option,nume2)
-result.textContent = extraValue(all,option2,nume3)
-}
-})
-
-function total(){ 
-
- caja = document.getElementById("user").value
-coco = caja.split(option2)
-numero1 = parseFloat(coco[0]) 
-numero2 = parseFloat(coco[1])
-console.log(coco)
-return  mathematicalOperation(numero1,option2,numero2)
-
-
-}
-
-
-
-
-const add = document.getElementById("add")
-add.addEventListener("click", () => { 
-data1 = document.getElementById("user").value+="+"
-separacion = data1
-coco = data1
-option = "+"
-option2 = "+"
-if (secondClick === 2) {
-total()
-console.log (total())
-}
- 
-
-})
-
-const rest = document.getElementById("rest")
-rest.addEventListener("click", () => {
-secondClick++    
-data2 = document.getElementById("user").value+="-"
-separacion = data2
-coco = data2
-
-option = "-"
-option2 = "-"
-
-if (secondClick === 2) {
-total()
-console.log (total())
-}
-
-})
-
-const multi= document.getElementById("multi")
-multi.addEventListener("click", () => {
-data3 = document.getElementById("user").value+="x"
-separacion = data3
-option = "x"
-})
-
-const divide = document.getElementById("divide")
-divide.addEventListener("click", () => {
-data4 = document.getElementById("user").value+="/"
-separacion = data4
-option = "/"
-})
-
-const clear = document.getElementById("clear")
-clear.addEventListener("click", () => {
-clearData = document.getElementById("user").value = ""
-separacion = clearData
-result.textContent = ""
-})
-
-const deletelastOne = document.getElementById("deletelastOne")
-deletelastOne.addEventListener("click", () => {
-last = document.getElementById("user")
-last.value = last.value.slice(0,-1) 
-
-})
-
-const result = document.createElement("div")
-document.body.appendChild(result)
-
-*/
