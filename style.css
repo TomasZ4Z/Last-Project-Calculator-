@@ -1,0 +1,67 @@
+
+
+.frame{
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: black;
+padding: 10px;
+
+}
+
+#container{
+display: flex;
+flex-direction:column;
+align-items: center;
+justify-content: space-between;
+height: 400px;
+width: 600px;
+padding-top: 100px;
+padding-bottom: 50px;
+background-color: forestgreen;
+}
+
+#numberCreation{ 
+height: 190px;
+width: 150px;    
+
+}
+
+button{
+height: 45px;
+width: 45px;
+
+}
+
+input{
+height: 30px;
+   
+}
+
+#operatorBox{
+display: flex;
+
+}
+
+#answer{
+display: flex;
+justify-content: center;    
+background-color: rgb(5, 35, 43);
+color: bisque;
+font-weight: bold;
+}
+
+#greeting{
+display: flex;
+justify-content: center;  
+background-color: rgb(5, 35, 43);  
+color: rgb(168, 16, 16);
+font-weight: bold;
+padding-bottom: 150px;
+}
+
+.frase{
+color: rgb(168, 16, 16);    
+font-weight: bold;
+font-size: 30px;
+}

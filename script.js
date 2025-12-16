@@ -1,14 +1,12 @@
-//Tu calculadora contendrá funciones para todos los operadores matemáticos básicos que suelen encontrarse
-//  en calculadoras, así que empieza creando funciones para los siguientes elementos y pruébalas en la consola de tu navegador:
-
-//sumar
-//restar
-//multiplicar
-//dividir
-// Tu calculadora contendrá funciones para todos los operadores matemáticos básicos que suelen encontrarse 
-// en calculadoras, así que empieza creando funciones para los siguientes elementos y pruébalas en la consola de tu navegador:
- 
-
+/*Tu calculadora contendrá funciones para todos los operadores matemáticos básicos que suelen encontrarse
+ en calculadoras, así que empieza creando funciones para los siguientes elementos y pruébalas en la consola de tu navegador:
+-sumar
+-restar
+-multiplicar
+-dividir
+ Tu calculadora contendrá funciones para todos los operadores matemáticos básicos que suelen encontrarse 
+ en calculadoras, así que empieza creando funciones para los siguientes elementos y pruébalas en la consola de tu navegador:
+ */
 
 function mathematicalOperation(num1, operador, num2) {
      
@@ -27,7 +25,9 @@ return mathematicalOperation(sum, operador, num3)
 
 
 const input = document.querySelector("#user")
+
 const resulty = document.createElement("div")
+resulty.id = "answer"
 resulty.textContent = 'padresito, me duele el poto'
 document.body.appendChild(resulty)
 
@@ -59,7 +59,6 @@ console.log(resultado)
 
 
 
-
 if (nums.length === 3){
 const firstpair = mathematicalOperation(nums[0],ops[0],nums[1])    
 const final = extraValue(firstpair,ops[1],nums[2])
@@ -81,9 +80,10 @@ function opClick(op) {
   }
 
     if (secondClick === 2){
-    input.value += ""
+    
     return
    }
+   console.log (secondClick)
 }
 
 
@@ -91,9 +91,6 @@ document.getElementById("add").addEventListener("click",() => opClick("+"))
 document.getElementById("rest").addEventListener("click",() => opClick("-"))
 document.getElementById("multi").addEventListener("click",() => opClick("x"))
 document.getElementById("divide").addEventListener("click",() => opClick("/"))
-
-
-
 
 
 document.getElementById("clear").addEventListener("click",() => {
@@ -104,29 +101,37 @@ secondClick = 0
 
 document.getElementById("deleteLastOne").addEventListener("click",() => {
 input.value = input.value.slice(0,-1)    
-secondClick = 0
+const ultimo = input.value[input.value.length -1]
+if (isNaN(Number(ultimo))){
+ secondClick = 1
+}
+else {secondClick = 0}  
+
+
 })
 
-document.getElementById("spot").addEventListener("click", () => {
+document.getElementById("dot").addEventListener("click", () => {
  input.value += "." 
+ secondClick = 0
 })
 
- const changeOfOperator = document.createElement("user")
+ const changeOfOperator = document.createElement("div")
+changeOfOperator.id = "greeting"
 document.body.appendChild(changeOfOperator)
 changeOfOperator.textContent = "buenas"
 
-let numberGrowing = 0
+let growingNumber = 0
 
-const contenedor = document.getElementById("contenedor")
+const contenedor = document.getElementById("numberCreation")
 
 for (let i = 0; i < 10; i++){  
 const create = document.createElement("button")
- numberGrowing += 1 
+ growingNumber += 1 
  if (i === 0){
- numberGrowing = 0 
+ growingNumber = 0 
  }
 
-create.textContent = numberGrowing
+create.textContent = growingNumber
 
 create.addEventListener("click",() => {
 input.value += create.textContent
